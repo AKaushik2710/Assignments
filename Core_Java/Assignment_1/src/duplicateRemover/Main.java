@@ -35,6 +35,7 @@ public class Main {
 		for(int i=0; i<length; i++) {
 			arr[i] = sc.nextInt();
 		}
+		sc.close();
 		System.out.println("The resultant array is "+Arrays.toString(removeDuplicates(arr)));
 	}
 }
