@@ -5,5 +5,6 @@
  * @author Amank
  *
  */
-module Collections {
+module JDBC {
+	requires java.sql;
 }

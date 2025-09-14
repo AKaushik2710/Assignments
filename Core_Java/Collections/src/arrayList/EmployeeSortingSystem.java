@@ -11,7 +11,7 @@ class SortById implements Comparator<Employee>{
 }
 class SortByName implements Comparator<Employee>{
 	public int compare(Employee e1, Employee e2) {
-		return e1.ename.compareTo(e1.ename);
+		return e1.ename.compareTo(e2.ename);
 	}
 }
 
