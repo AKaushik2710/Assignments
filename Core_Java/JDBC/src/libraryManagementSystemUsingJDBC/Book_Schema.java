@@ -21,23 +21,23 @@ public class Book_Schema {
         return null;
     }
 
-    void createSchema() {
+    void createSchema(String dbName, String tabName) {
         try {
             // Step 1: connect without database
             Connection con = createConnection("");
             Statement state = con.createStatement();
 
             // Step 2: create db if not exists
-            String dbCreate = "CREATE DATABASE IF NOT EXISTS library_db";
+            String dbCreate = "CREATE DATABASE IF NOT EXISTS "+dbName;
             state.executeUpdate(dbCreate);
             con.close();
 
             // Step 3: connect to the new database
-            con = createConnection("library_db");
+            con = createConnection(dbName);
             state = con.createStatement();
 
             // Step 4: create table if not exists
-            String tableCreate = "CREATE TABLE IF NOT EXISTS books("
+            String tableCreate = "CREATE TABLE IF NOT EXISTS " + tabName+"("
                     + "id INT PRIMARY KEY, "
                     + "title VARCHAR(100), "
                     + "author VARCHAR(100), "
@@ -51,10 +51,10 @@ public class Book_Schema {
         }
     }
 
-    Connection useDB() {
+    Connection useDB(String s, String t) {
         // Ensure db + tables exist
-        createSchema();
+        createSchema(s, t);
         // Always return a connection to the correct db
-        return createConnection("library_db");
+        return createConnection(s);
     }
 }

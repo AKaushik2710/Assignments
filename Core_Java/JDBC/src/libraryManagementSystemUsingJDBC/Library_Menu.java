@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.util.Scanner;
 public class Library_Menu {
 	static Book_Schema bs = new Book_Schema();
-	static Connection con = bs.useDB();
+	static Connection con = bs.useDB("library_db", "books");
 	static int bookId=getNewBookId();
 	static int getNewBookId() {
 	    try {
