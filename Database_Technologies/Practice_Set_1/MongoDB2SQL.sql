@@ -1,0 +1,14 @@
+create database ecommerceDB;
+use ecommerceDB;
+create table ratings(ratingId int , ratingVal float, foreign key(ratingId) references products(ratingId));
+create table products(name varchar(30), category varchar(20), price float, stock int, ratingId int primary key);
+insert into products values("pen", "stationary", 10, 45, 1001), ("Book", "stationary", 967, 15, 1002), ("Shoes", "Footwear", 1600, 23, 1003), ("Slippers", "Footwear", 300, 17, 1004), ("Mobile", "Electronics", 15000, 15, 1005), ("Charger", "Electronics", 300, 50, 1006);
+select * from ratings;
+drop table products;
+drop table ratings;
+select * from products;
+insert into ratings values(1004, 3.88),(1004, 4.2),(1004, 4.5),(1005, 3.5),(1005, 4.7),(1005, 4.4),(1006, 5),(1006, 3.5),(1006, 4.37),(1006, 4.9),(1006, 3.78),(1006, 4.5);
+select * from products where price > 1000 and stock <20;
+select name, price from products where category="Electronics";
+select * from products order by price desc limit 3;
+select * from products where ratingId in (select r.ratingId from ratings r, ratings s where r.ratingId = s.ratingId group by r.ratingId having avg(r.ratingVal)>4.2);
