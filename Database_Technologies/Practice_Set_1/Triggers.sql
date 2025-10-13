@@ -56,6 +56,7 @@ delete from emp_archive;
 
 -- 10.Create   a BEFORE DELETE trigger on the table emp and insert the values into the emp_archive table 
 delimiter //
+drop trigger delToins//
 create trigger delToins before delete
 on emp
 for each row begin

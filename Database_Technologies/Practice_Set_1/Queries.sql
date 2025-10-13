@@ -288,32 +288,48 @@ select max(basicpay), gradecode from emp group by gradecode;
 select f.empname, l.empname as supervisor from emp f inner join emp l on f.supcode = l.empcode; 
 
 -- 31.List the number of officers reporting to each supervisor having more than 3people working under them
+use dac_dbt;
+select count(empcode) from emp where empcode in (select e.empcode from emp e inner join emp s on e.empcode = s.supcode group by e.empcode having count(e.empcode)>3) and supcode is not null;
 select f.empname, count(*) as subcount from emp f inner join emp l on f.empcode = l.supcode group by f.empname having subcount>3;
+select count(empcode) from emp where empcode in (select e.empcode from emp e, emp s where e.empcode = s.supcode group by e.empcode having count(e.empcode) >3 ) and supcode is not null;
 
 -- 32.List the employees who have not got any promotion till now.
 select * from emp where empcode not in (select distinct empcode from history);
+select e.empcode, e.empname from emp e where e.empcode not in (select distinct empcode from history);
 
 -- 33.List the employee with maximum number of promotions. Also list the number ofpromotions that he/she got.
+select e.empcode, e.empname, count(h.empcode) as cn from emp e, history h where e.empcode = h.empcode group by e.empcode, e.empname order by cn desc limit 1;
 select empcode, count(empcode) as emcount from history group by empcode order by emcount desc  limit 1;
 
 -- 34.List the employees who got promoted in the year 1991.
 select * from history;
+select * from emp where  empcode in (select empcode from history where year(changedate) = 1991);
 select * from emp where empcode in (select empcode from history where year(changedate)=1991);
 
 -- 35.List the department budget and the total salary drawn (by theemployees of thisdepartment).
-
+use dac_dbt;
+show tables;
+select * from emp, salary, dept;
+select * from emp;
+select deptcode, count(deptcode) from emp e group by deptcode;
+select * from dept;
+select d.deptcode, d.budget, sum(e.basicpay) from dept d, emp e where d.deptcode = e.deptcode group by d.deptcode;
 
 -- 36.Display the employee names in full uppercase.
 select upper(empname) from emp;
 
 -- 37.List all the employees drawing salary higher than the salary drawn by ‘Jain’
 select * from emp where basicpay > (select basicpay from emp where empname="jain");
+select e.empcode from emp e, salary s where e.empcode = s.empcode group by e.empcode having max(s.salmonth);
+select e.emp
+name, (s.basic+s.allow-s.deduct) as sal from salary s, emp e where s.salmonth in (select max(salmonth) from salary group by empcode);
 
 -- 38.List all the employees who have higher salary than all the employees who drawsalary in the range of 11000 to 12000.
 select * from emp where basicpay > 12000;
 
 -- 39.List all the employees who have greater than average pay. Display the result in theincreasing order of the salary.
 select *  from emp where basicpay > (select avg(basicpay) from emp) order by basicpay;
+select e.*, s.basic+s.allow-s.deduct from emp e, salary s where s.basic+s.allow-s.deduct > (select avg(s.basic+s.allow-s.deduct) from salary s) and e.empcode =  s.empcode and s.salmonth in (select max(salmonth) from salary) order by s.basic+s.allow-s.deduct;
 
 -- 40.List the employees who draws highest salary
 select * from emp where basicpay = (select max(basicpay) from emp);
@@ -322,7 +338,8 @@ select * from emp where basicpay = (select max(basicpay) from emp);
 select * from emp where basicpay != (select max(basicpay) from emp);
 
 -- 42.List the employees who draw highest salary in each department
-select * from emp where empcode in (select max(basicpay) from emp);
+select deptcode, basicpay from emp e group by deptcode, basicpay having basicpay = max(basicpay);
+select e.* from emp e where e.basicpay in (select max(e.basicpay) from emp e group by e.deptcode);
 select * from emp where basicpay in (select max(e.basicpay) from emp e inner join emp  m on e.deptcode = m.deptcode group by e.deptcode);
 select e.deptcode, max(e.basicpay) from emp e inner join emp  m on e.deptcode = m.deptcode group by e.deptcode;
 
@@ -331,9 +348,11 @@ select max(basicpay) from emp where basicpay not in (select max(basicpay) from e
 
 -- 44.List the employee(s) who are getting fifth highest salary.
 select * from emp where basicsal in (select basicsal from emp order by basicsal desc limit 5) order by basicsal asc limit 1;
+select  min(basicpay) from emp where basicpay in (select basicpay from emp order by basicpay desc);
 
 -- 45.List the department name of the female employee who draws the highest salaryhigherthan any other female employee
 select * from emp where basicpay = (select max(basicpay) from emp where sex = 'f');
+select deptcode from emp where empcode in (select  empcode from emp group by empcode having max(basicpay) and sex = "f");
 
 -- 46.List all male employees who draw salary greater than atleast on female employee
 select * from emp where basicpay > (select min(basicpay) from emp where sex = 'f') and sex = 'm';
@@ -341,5 +360,6 @@ select * from emp where basicpay > (select min(basicpay) from emp where sex = 'f
 -- 47.List the departments in which average salary of employees is more than averagesalary of the company
 select avg(basicpay) from emp group by deptcode;
 
--- 48.List the employees drawing salary lesser than the average salary of employeesworking for ‘accounts’ department
+-- 48.List the employees drawing salary lesser than the average salary of employeesworking for ‘accounts’ 
+select * from emp where basicpay < (select avg(basicpay) from emp where deptcode = "acct") and deptcode !="acct";
 select * from emp where basicpay < (select avg(basicpay) from emp where deptcode="acct") and deptcode != "acct";

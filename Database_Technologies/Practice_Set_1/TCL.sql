@@ -1,4 +1,5 @@
 -- 1. Create course table with the following fields a. course_id , type integer, Primary keyb. course_name type varchar(20)
+drop table course;
 create table course(course_id int primary key, course_name varchar(20));
 start transaction;
 -- 2. Insert the following records in course table (1, DBT)(2,OS)(3,JAVA)(4, Data structure)
