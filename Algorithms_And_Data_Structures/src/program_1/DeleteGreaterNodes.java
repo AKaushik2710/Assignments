@@ -1,5 +1,7 @@
 package program_1;
 
+import java.util.Scanner;
+
 public class DeleteGreaterNodes {
 	static Node nodeDeleter(Node head) {
 		Node temp = head;
@@ -28,24 +30,33 @@ public class DeleteGreaterNodes {
 		return res;
 	}
 	
-	public static void main(String[] args) {
-		Node head = new Node(12);
-		head.next = new Node(15);
-		head.next.next = new Node(10);
-		head.next.next.next = new Node(11);
-		head.next.next.next.next = new Node(5);
-		head.next.next.next.next.next = new Node(6);
-		head.next.next.next.next.next.next = new Node(2);
-		head.next.next.next.next.next.next.next = new Node(3);
-		head.next.next.next.next.next = new Node(6);
-		head.next.next.next.next.next.next = new Node(2);
-		head.next.next.next.next.next.next.next = new Node(3);
+	static Node headCreator(int[] vals) {
+		Node head = new Node(vals[0]);
+		Node temp = head;
+		for(int i = 1; i<vals.length; i++) {
+			head.next = new Node(vals[i]);
+			head = head.next;
+		}
 		
-//		Node head = new Node(10);
-//		head.next = new Node(20);
-//		head.next.next = new Node(30);
-//		head.next.next.next = new Node(40);
-//		head.next.next.next.next = new Node(50);
+		return temp;
+	}
+	
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int length = sc.nextInt();
+		sc.nextLine();
+		String nodes = sc.nextLine();
+		
+		int[] vals = new int[length];
+		String[] adders = nodes.split(" ");
+		int pointer = 0;
+		for(String str : adders) {
+			vals[pointer++] = Integer.parseInt(str);
+		}
+		
+		Node head = headCreator(vals);
+		
 		Node otp = nodeDeleter(head);
 		
 		while(otp!=null) {
