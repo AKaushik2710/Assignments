@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+    <header>
+        <div id="headImg">
+            <img src="img/Logo(1)2.png" alt="Logo">
+        </div>
+        <nav>
+            <ul>
+                <li>About Us</li>
+                <li>Our Courses</li>
+                <li class="underlined">Free Resources</li>
+                <li>Online Community</li>
+                <li>IELTS</li>
+            </ul>
+        </nav>
+        <button id="loginBtn">Register</button>
+        <button id="mob">&#9776;</button>
+        <button id="xmob">&#10005;</button>
+    </header>
+
+    <div id="mainContent">
+        <main>
+            <div id="mainText">
+                <h2>ESL Blogs - Headline</h2>
+                <p>Sub head line</p>
+            </div>
+            <div id="mainImg">
+                <img src="img/182.png" alt="Blog Image">
+            </div>
+        </main>
+        <section id="cardSec">
+            <h4 id="mostPopular"><span class="underlined">Most</span> Popular Blogs</h4>
+            <div class="cards">
+                <div class="card">
+                    <div class="cardImg">
+                        <img src="img/grammar.png" alt="Blog Image">
+                    </div>
+                    <div class="cardText">
+                        <p>How English Grammar Can Help You in Everyday Life!</p>
+                        <div class="subHeads">
+                            <span>Grammar</span>
+                            <span>5 min read</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="cardImg">
+                        <img src="img/grammar(3).png" alt="Blog Image">
+                    </div>
+                    <div class="cardText">
+                        <p>Avoiding Common Mistakes in English!</p>
+                        <div class="subHeads">
+                            <span>Grammar</span>
+                            <span>6 min read</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="cardImg">
+                        <img src="img/grammar(2).png" alt="Blog Image">
+                    </div>
+                    <div class="cardText">
+                        <p>The Basics of Verb Tenses in an Informative Guide!</p>
+                        <div class="subHeads">
+                            <span>Grammar</span>
+                            <span>4 min read</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cards">
+                <div class="card">
+                    <div class="cardImg">
+                        <img src="img/vocabulary.png" alt="Vocabulary Image">
+                    </div>
+                    <div class="cardText">
+                        <p>Top 7 Things You Can DO Today To Get An Amazing Vocabulary</p>
+                        <div class="subHeads">
+                            <span>Vocabulary</span>
+                            <span>6 min read</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="cardImg">
+                        <img src="img/spokenenglish.png" alt="Spoken English Image">
+                    </div>
+                    <div class="cardText">
+                        <p>Avoiding Common Mistakes in English!</p>
+                        <div class="subHeads">
+                            <span>Spoken English</span>
+                            <span>7 min read</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="cardImg">
+                        <img src="img/pronuciation.png" alt="Pronunciation Image">
+                    </div>
+                    <div class="cardText">
+                        <p>The Basics of Verb Tenses in an Informative Guide!</p>
+                        <div class="subHeads">
+                            <span>Pronunciation</span>
+                            <span>5 min read</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <div id="testImg">
+                <img src="img/Takethelevel test.png" alt="Take the Level Test">
+            </div>
+            <div id="testText">
+                <h3>Take the level test and understand your English Knowledge</h3>
+                <p>Take just 10 minutes and we will share customized report</p>
+                <button>Take test now</button>
+            </div>
+        </footer>
+    </div>
+    <script>
+        window.onresize = ()=>{
+            if(window.innerWidth > 450){
+                document.querySelector("nav").style.display = "block";
+                document.getElementById("loginBtn").style.display = "block";
+                document.getElementById("mob").style.display = "none";
+                document.getElementById("xmob").style.display = "none";
+            }
+            else{
+                document.querySelector("nav").style.display = "none";
+                document.getElementById("loginBtn").style.display = "none";
+                document.getElementById("mob").style.display = "block";
+                document.getElementById("xmob").style.display = "none";
+            }
+        }
+        document.getElementById("mob").addEventListener("click", ()=>{
+            document.getElementById("xmob").style.display = "block";
+            document.getElementById("mob").style.display = "none";
+            document.querySelector("nav").style.display = "block";
+            document.getElementById("loginBtn").style.display = "block";
+        })
+        document.getElementById("xmob").addEventListener("click", ()=>{
+            document.getElementById("xmob").style.display = "none";
+            document.getElementById("mob").style.display = "block";
+            document.querySelector("nav").style.display = "none";
+            document.getElementById("loginBtn").style.display = "none";
+        })
+    </script>
+</body>
+</html>
