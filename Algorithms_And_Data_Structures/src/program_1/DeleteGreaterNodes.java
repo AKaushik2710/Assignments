@@ -2,6 +2,15 @@ package program_1;
 
 import java.util.Scanner;
 
+class Node {
+	public int val;
+	public Node next;
+	public Node(int val){
+		this.val = val;
+		this.next = null;
+	}
+}
+
 public class DeleteGreaterNodes {
 	static Node nodeDeleter(Node head) {
 		Node temp = head;
@@ -63,6 +72,5 @@ public class DeleteGreaterNodes {
 			System.out.println(otp.val);
 			otp=otp.next;
 		}
-//		System.out.println(temp.val + "jhj");
 	}
 }

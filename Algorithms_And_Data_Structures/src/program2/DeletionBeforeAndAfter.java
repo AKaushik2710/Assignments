@@ -1,7 +1,13 @@
 package program2;
 import java.util.Scanner;
-
-import program_1.Node;
+class Node {
+	public int val;
+	public Node next;
+	public Node(int val){
+		this.val = val;
+		this.next = null;
+	}
+}
 
 public class DeletionBeforeAndAfter {
 	static void beforeDel(int len, Node head, int num) {

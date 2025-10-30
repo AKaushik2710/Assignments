@@ -1,0 +1,70 @@
+{
+  "employees": [
+    {
+      "id": "5",
+      "name": "David Murphy",
+      "address": "455 Redwood St, OaksTown",
+      "salary": 50000
+    },
+    {
+      "id": "6",
+      "name": "Mark Wood",
+      "address": "200 Leaflet St, MayorTown",
+      "salary": 59000
+    },
+    {
+      "id": "7",
+      "name": "Stephen Curry",
+      "address": "123 Mark St, Texas",
+      "salary": 59000
+    },
+    {
+      "id": "9",
+      "name": "Stephen Strong",
+      "address": "445 thomas St, Texas",
+      "salary": 59000
+    },
+    {
+      "id": "2",
+      "name": "Aman",
+      "address": "Rohtak",
+      "salary": "50000"
+    },
+    {
+      "id": "2",
+      "name": "Aman",
+      "address": "RTK",
+      "salary": "50000"
+    },
+    {
+      "id": "2",
+      "name": "Aman",
+      "address": "RTK",
+      "salary": "50000"
+    },
+    {
+      "id": "2",
+      "name": "Aman",
+      "address": "RTK",
+      "salary": "50000"
+    },
+    {
+      "id": "3",
+      "name": "Kaushik",
+      "address": "Rohtak",
+      "salary": "55000"
+    },
+    {
+      "id": "3",
+      "name": "Kaushik",
+      "address": "Rohtak",
+      "salary": "55000"
+    },
+    {
+      "id": "55",
+      "name": "njuikm",
+      "address": "sjnfnjdnfjdn",
+      "salary": "89000"
+    }
+  ]
+}

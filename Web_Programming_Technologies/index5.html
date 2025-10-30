@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playwrite+AU+TAS:wght@100..400&display=swap" rel="stylesheet">
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: "Playwrite AU TAS", cursive;
+        }
+        #appender{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 40dvw;
+            height: 10vh;
+            margin-bottom: 1rem;
+        }
+
+        #appender > label{
+            font-size: 1.25rem;
+            font-size: bold;
+        }
+        #appender > input{
+            width: 20dvw;
+            height: 5dvh;
+            padding: 0 0.5rem;
+            border: none;
+            background-color: steelblue;
+        }
+
+        #appender>button{
+            width: 10dvw;
+            font-size: 1rem;
+            padding: 0.25rem 0.15rem;
+            background-color: rgb(115, 243, 115);
+            color: blanchedalmond;
+            border: none;
+        }
+
+        button:hover, button:active{
+            border: 1px solid black;
+        }
+
+        #results{
+            width: 100%;
+            min-height: 78dvh;
+            height: auto;
+            border: 5px solid red;
+            display: block;
+            padding: 1rem 0.5rem;
+            overflow-wrap: normal;
+            
+        }
+
+        .childDiv{
+            display: inline-block;
+            background-color: black;
+            padding: 1dvh 0;
+            position: relative;
+            height: 7dvh;
+            margin-bottom: 1rem;
+            margin-right: 1rem;
+        }
+
+        .children{
+            padding: 0.5rem 1rem;
+            margin: 0.3rem 0.25rem 0;
+            color: white;
+        }
+
+        .remover{
+            color: red;
+            margin-right: 0.5rem;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+    <div id="appender">
+        <label>Skill</label>
+        <input type="text" id="myInput">
+        <button onclick=appendIt() id="adder"> Add </button>
+    </div>
+    <div id="results">
+
+    </div>
+    <script>
+        
+        let appendIt = ()=>{
+            let val = document.getElementById("myInput").value;
+            if(val !== ""){
+                let div = document.createElement("div");
+            div.className = "childDiv";
+            let elm = document.createElement("span");
+            elm.innerHTML=val;
+            elm.className = "children";
+            let remover = document.createElement("span");
+            remover.innerHTML = "&#10005";
+            remover.style.cursor = "pointer";
+            remover.className = "remover";
+            div.append(elm);
+            div.append(remover);
+
+            remover.onclick = ()=>{
+                document.getElementById("results").removeChild(div);
+            }
+            document.getElementById("results").append(div);
+            }
+        }
+    </script>
+</body>
+</html>
