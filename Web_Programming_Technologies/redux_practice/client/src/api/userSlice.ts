@@ -1,11 +1,11 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import { fetchOneUser, fetchUsers, deleteUser, changeUser, addUser }  from "./userCalls";
-import { act } from "react";
+// import { act } from "react";
 export interface UserState{
     id : number,
     name : string,
-    address : string,
-    salary : number
+    age : number,
+    city : string
 }
 const initialState : UserState[] = [];
 

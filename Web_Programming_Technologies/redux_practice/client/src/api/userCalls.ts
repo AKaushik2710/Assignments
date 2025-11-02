@@ -53,7 +53,7 @@ export const changeUser = createAsyncThunk(
     'users/changeUser',
     async(user : UserState, thunkAPI)=>{
         try{
-            const response = await fetch(`${import.meta.env.VITE_API_URL}/employees/${user.id}`,{
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/employees`,{
                 method : "PUT",
                 headers : {
                     'Content-Type' : 'application/json'
