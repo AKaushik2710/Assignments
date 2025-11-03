@@ -1,0 +1,14 @@
+const mysql = require('mysql2');
+
+const db = mysql.createConnection({
+    host : process.env.HOST,
+    user : process.env.USER,
+    password : process.env.PASS,
+    database : process.env.DB
+})
+
+db.connect((err)=>{
+    if(err) console.log("Database Refused to Connect");
+})
+
+module.exports = db;

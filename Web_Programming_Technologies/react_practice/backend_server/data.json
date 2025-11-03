@@ -2,9 +2,9 @@
   "employees": [
     {
       "id": "5",
-      "name": "David Murphy",
-      "address": "455 Redwood St, OaksTown",
-      "salary": 50000
+      "name": "Kishan",
+      "address": "BLR",
+      "salary": "100000"
     },
     {
       "id": "6",
